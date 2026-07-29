@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hetherington Post — July 2026</title>
+<meta name="description" content="The Hetherington Post, July 2026: Beneath the Surface — our first client appreciation evening, the NSW Exploration & Tenures Forum, AMEC in Perth, and the latest regulatory updates across NT, SA, WA and NSW.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#152E38;          /* deep slate navy — brand backdrop */
+  --slate:#2E4E5C;
+  --slate-soft:#3E6373;
+  --celadon:#D9E0C2;      /* pale sage — logo mark */
+  --celadon-deep:#B9C69B;
+  --paper:#F7F6F1;
+  --white:#FFFFFF;
+  --mist:#A7BFC7;         /* muted blue-grey on dark */
+  --line:rgba(21,46,56,.14);
+  --line-dark:rgba(255,255,255,.16);
+  --max:1180px;
+  --serif:"Newsreader", Georgia, serif;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* ---------- eyebrow / labels ---------- */
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow.on-dark{color:var(--celadon)}
+.eyebrow.on-light{color:var(--slate-soft)}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(21,46,56,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff}
+.brand img{height:26px;width:auto}
+.brand .fallback{font-family:var(--serif);font-size:21px;letter-spacing:.02em;font-weight:500}
+.brand .edition{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);border-left:1px solid var(--line-dark);padding-left:14px}
+.topnav{display:flex;gap:26px}
+.topnav a{color:var(--mist);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em;transition:color .2s}
+.topnav a:hover,.topnav a:focus-visible{color:var(--celadon)}
+@media(max-width:860px){.topnav{display:none}.brand .edition{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:var(--ink);color:#fff;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,46,56,.35) 0%,rgba(21,46,56,.15) 40%,rgba(21,46,56,.92) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(48px,8vh,96px);width:100%}
+.hero .kicker{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.hero .kicker .rule{height:1px;width:56px;background:var(--celadon)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,8.5vw,110px);line-height:1.02;letter-spacing:-.01em;max-width:12ch}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--celadon)}
+.hero .stand{margin-top:26px;max-width:58ch;font-size:clamp(16px,1.6vw,19px);color:#E6EDEF;font-weight:400}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:28px;margin-top:38px;padding-top:22px;border-top:1px solid var(--line-dark);font-size:13px;color:var(--mist);letter-spacing:.06em}
+.hero .meta-row strong{color:#fff;font-weight:600}
+.scrollcue{position:absolute;right:clamp(20px,4vw,48px);bottom:32px;z-index:3;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist);display:flex;align-items:center;gap:12px}
+.scrollcue::after{content:"";width:1px;height:44px;background:var(--celadon);animation:drip 2.4s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:640px){.scrollcue{display:none}}
+
+/* ---------- section scaffolding ---------- */
+section{padding:clamp(64px,9vw,120px) 0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head .rule{height:1px;background:var(--line);align-self:center}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.01em}
+h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.4vw,27px);line-height:1.25}
+p+p{margin-top:1em}
+.lede{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.5;font-weight:400}
+
+/* ---------- editor ---------- */
+.editor{background:var(--white);border-top:1px solid var(--line)}
+.editor-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:start}
+.editor-note p{max-width:62ch}
+.sig{margin-top:34px;display:flex;align-items:center;gap:18px}
+.sig .name{font-family:var(--serif);font-size:22px;font-style:italic}
+.sig .role{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-soft);margin-top:2px}
+.editor-photo figure{position:relative}
+.editor-photo img{border-radius:2px}
+figcaption{font-size:12.5px;color:var(--slate-soft);margin-top:10px;letter-spacing:.03em}
+@media(max-width:860px){.editor-grid{grid-template-columns:1fr}}
+
+/* ---------- feature: beneath the surface ---------- */
+.feature{background:var(--ink);color:#fff}
+.feature .eyebrow{color:var(--celadon)}
+.feature p{color:#DCE6E9;max-width:64ch}
+.feature .lede{color:#fff}
+.feat-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.feat-media video{width:100%;border-radius:2px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.gallery figure{margin:0}
+.gallery img{aspect-ratio:1/1;object-fit:cover;border-radius:2px;filter:saturate(.96)}
+.gallery figcaption{color:var(--mist)}
+.pull{border-left:2px solid var(--celadon);padding-left:22px;margin:30px 0;font-family:var(--serif);font-size:clamp(19px,2vw,22px);font-style:italic;color:var(--celadon);line-height:1.45}
+@media(max-width:860px){.feat-grid{grid-template-columns:1fr}}
+
+/* ---------- events ---------- */
+.event-block{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,72px);align-items:start}
+.event-block+.event-block{margin-top:clamp(56px,8vw,96px);padding-top:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
+.event-block.flip .media{order:-1}
+.event-block p{max-width:62ch}
+.media video,.media img{width:100%;border-radius:2px}
+.factline{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px}
+.chip{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);border-radius:999px;color:var(--slate)}
+.chip.filled{background:var(--celadon);border-color:var(--celadon);color:var(--ink)}
+@media(max-width:860px){.event-block{grid-template-columns:1fr}.event-block.flip .media{order:0}}
+
+/* ---------- people ---------- */
+.people{background:var(--white);border-top:1px solid var(--line)}
+.people-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.promo-card{margin-top:34px;background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:28px 30px}
+.promo-card .eyebrow{display:block;margin-bottom:10px}
+.promo-names{font-family:var(--serif);font-size:clamp(20px,2.2vw,25px);line-height:1.35}
+.promo-names span{font-style:italic;color:var(--slate-soft)}
+@media(max-width:860px){.people-grid{grid-template-columns:1fr}}
+
+/* ---------- regulatory ---------- */
+.reg{background:var(--paper)}
+.reg-intro{max-width:66ch;margin-bottom:clamp(32px,4vw,48px)}
+.reg-list{display:grid;gap:18px}
+.reg-card{background:var(--white);border:1px solid var(--line);border-radius:2px;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:110px minmax(0,1fr);gap:clamp(18px,3vw,36px)}
+.juris{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--slate);line-height:1}
+.juris small{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-soft);margin-top:8px}
+.reg-card h3{margin-bottom:10px}
+.reg-card p{max-width:70ch;font-size:16px}
+.reg-card .more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--slate);border-bottom:1px solid var(--celadon-deep);padding-bottom:3px;transition:color .2s,border-color .2s}
+.reg-card .more:hover{color:var(--ink);border-color:var(--ink)}
+details.fulltext{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+details.fulltext summary{cursor:pointer;font-size:13.5px;font-weight:600;letter-spacing:.05em;color:var(--slate);list-style:none;display:inline-flex;align-items:center;gap:8px}
+details.fulltext summary::before{content:"+";font-family:var(--serif);font-size:19px;line-height:1;color:var(--celadon-deep)}
+details.fulltext[open] summary::before{content:"–"}
+details.fulltext .body{margin-top:16px;font-size:16px;max-width:70ch}
+details.fulltext h4{font-family:var(--serif);font-size:19px;font-weight:600;margin:22px 0 8px}
+details.fulltext ul{margin:10px 0 10px 20px}
+details.fulltext li{margin-bottom:6px}
+@media(max-width:640px){.reg-card{grid-template-columns:1fr}.juris{font-size:28px}.juris small{display:inline;margin-left:8px}}
+
+/* ---------- CTA + footer ---------- */
+.cta{background:var(--ink);color:#fff;text-align:left}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(32px,5vw,72px);align-items:center}
+.cta h2 em{font-style:italic;color:var(--celadon);font-weight:300}
+.cta p{color:var(--mist);max-width:52ch;margin-top:16px}
+.btn{display:inline-block;margin-top:8px;background:var(--celadon);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;padding:16px 30px;border-radius:2px;transition:background .2s}
+.btn:hover{background:#E6ECD2}
+.offices{display:grid;gap:26px}
+.office .city{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--celadon);margin-bottom:8px}
+.office p{color:#DCE6E9;font-size:15px;margin:0}
+.office a{color:#fff;text-decoration:none;border-bottom:1px solid var(--line-dark)}
+@media(max-width:860px){.cta .wrap{grid-template-columns:1fr}}
+footer{background:var(--ink);border-top:1px solid var(--line-dark);color:var(--mist)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:26px;padding-bottom:26px;font-size:13px}
+footer a{color:var(--celadon);text-decoration:none}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .scrollcue::after{animation:none}
+  .hero video{display:none}
+}
+:focus-visible{outline:2px solid var(--celadon-deep);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TOP BAR ══════════════ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="https://hetherington.net.au">
+      <img src="https://hetherington.net.au/wp-content/uploads/2024/10/HetheringtonHorizontal-EV.png" alt="Hetherington" onerror="this.remove();document.getElementById('wm').style.display='inline'">
+      <span class="fallback" id="wm" style="display:none">Hetherington</span>
+      <span class="edition">The Post · July 2026</span>
+    </a>
+    <nav class="topnav" aria-label="Edition sections">
+      <a href="#editor">Editor's note</a>
+      <a href="#beneath">Beneath the Surface</a>
+      <a href="#events">Events</a>
+      <a href="#people">Our people</a>
+      <a href="#regulatory">Regulatory updates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div class="hero">
+  <video autoplay muted loop playsinline poster="assets/bts-poster.jpg" aria-hidden="true">
+    <source src="assets/beneath-the-surface.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="kicker">
+      <span class="rule"></span>
+      <span class="eyebrow on-dark">The Hetherington Post · July 2026</span>
+    </div>
+    <h1>Beneath <em>the</em> Surface</h1>
+    <p class="stand">Our first-ever client appreciation evening opened NSW Minerals Week in style — a night at the Teahouse, Crown Sydney, celebrating the relationships at the core of everything we do. Beyond the work, beyond the titles, and beneath the surface.</p>
+    <div class="meta-row">
+      <span><strong>In this edition</strong></span>
+      <span>Beneath the Surface</span>
+      <span>Exploration &amp; Tenures Forum</span>
+      <span>AMEC in Perth</span>
+      <span>WIMNET 2026</span>
+      <span>Regulatory updates — NT · SA · WA · NSW</span>
+    </div>
+  </div>
+  <span class="scrollcue">Beneath the surface</span>
+</div>
+
+<!-- ══════════════ EDITOR ══════════════ -->
+<section class="editor" id="editor">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-light">Note from the editor</span>
+      <span class="rule"></span>
+    </div>
+    <div class="editor-grid">
+      <div class="editor-note reveal">
+        <p class="lede">NSW Minerals Week began this year with Beneath the Surface, Hetherington's first-ever client appreciation event — and we couldn't be prouder of how it landed.</p>
+        <p>Held at the Teahouse, Crown Sydney, it was a chance to pause, connect, and celebrate the relationships that sit at the core of what we do at Hetherington. The night featured curated food and beverage experiences, followed by a fireside conversation with Australian professional boxer Billy Dib, who brought real perspective, honesty, and impact to the room. We couldn't have hoped for a better first outing, and the warmth in the room made it clear just how much these relationships mean to all of us.</p>
+        <p>It was a strong start to a busy season for the firm — from our tenth consecutive year as main sponsor of the NSW Minerals Council's Exploration &amp; Tenures Forum, to AMEC's Cultural Heritage to Native Title Forum in Perth, and the launch of the 2026 NSW Women in Mining Network. You'll find it all in the pages that follow, alongside the regulatory shifts our team is tracking for clients across the country.</p>
+        <p>Thank you to our valued clients, supporters, and industry peers who continue to make this work what it is.</p>
+        <div class="sig">
+          <div>
+            <div class="name">David Salim</div>
+            <div class="role">CEO &amp; Principal Solicitor, Hetherington</div>
+          </div>
+        </div>
+      </div>
+      <div class="editor-photo reveal">
+        <figure>
+          <img src="assets/DSC07054.jpg" alt="David Salim and Vivian Salim at the Beneath the Surface media wall">
+          <figcaption>David Salim and Non-Executive Director Vivian Salim at Beneath the Surface, Crown Sydney.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FEATURE ══════════════ -->
+<section class="feature" id="beneath">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Feature · NSW Minerals Week</span>
+      <span class="rule" style="background:var(--line-dark)"></span>
+    </div>
+    <div class="feat-grid">
+      <div class="reveal">
+        <h2>An evening of genuine hospitality</h2>
+        <p class="lede" style="margin-top:18px">Hetherington presents Beneath the Surface — our first client appreciation evening, and one we'll remember.</p>
+        <p style="margin-top:18px">Guests were welcomed to the Teahouse at Crown Sydney for curated food and beverage experiences, before settling in for a fireside discussion between David Salim and two-time world champion boxer Billy Dib — a conversation that brought real perspective, honesty and impact to the room.</p>
+        <div class="pull">"A chance to pause, connect and celebrate the relationships that sit at the core of what we do — beyond the work, beyond the titles, and beneath the surface."</div>
+        <p>Thank you to our valued clients, supporters and industry peers who joined us and made the evening what it was. Here's to many more.</p>
+      </div>
+      <div class="feat-media reveal">
+        <video controls preload="metadata" poster="assets/bts-poster.jpg">
+          <source src="assets/beneath-the-surface.mp4" type="video/mp4">
+        </video>
+        <div class="gallery">
+          <figure><img src="assets/DSC07254.jpg" alt="The Hetherington team at the Beneath the Surface media wall"></figure>
+          <figure><img src="assets/DSC07429.jpg" alt="Fireside conversation between Billy Dib and David Salim"></figure>
+          <figure><img src="assets/DSC07479.jpg" alt="Copies of Billy Dib's book A True Heart"></figure>
+        </div>
+        <figcaption style="color:var(--mist);font-size:12.5px;margin-top:10px">The Hetherington team · the fireside conversation with Billy Dib · A True Heart, Billy's story in print.</figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EVENTS ══════════════ -->
+<section id="events">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-light">What's happening at Hetherington</span>
+      <span class="rule"></span>
+    </div>
+
+    <div class="event-block reveal">
+      <div>
+        <h2>NSW Minerals Council's Exploration &amp; Tenures Forum</h2>
+        <div class="factline">
+          <span class="chip filled">Main sponsor — 10th consecutive year</span>
+          <span class="chip">4 May · InterContinental Sydney</span>
+        </div>
+        <p>Hetherington was proud to return as the main sponsor of the NSW Minerals Council's Exploration &amp; Tenures Forum 2026 for the tenth consecutive year. David Salim had the privilege of opening the day with the welcome address before a packed program of case studies and expert insights got underway.</p>
+        <p>Assistant Manager Jemima Moffat took to the stage in the first session to share her insights on land access case studies and tips for success, and David was joined by Karinne, Emily, Olivia, Yung and Vivian for the day, which also covered carbon farming, exploration and mine approvals, and closed with government updates from NSW Resources and the NSW Resources Regulator.</p>
+        <p>The forum concluded with a guest address by the Hon Courtney Houssos MLC — a fitting close to a day that brought together chief executives, exploration managers, titles managers and consultants from across the sector. It was a strong way to start the week, surrounded by so many of the conversations that matter most to our industry.</p>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" poster="assets/forum-poster.jpg">
+          <source src="assets/tenures-forum.mp4" type="video/mp4">
+        </video>
+        <figcaption>Highlights from the Exploration &amp; Tenures Forum 2026.</figcaption>
+      </div>
+    </div>
+
+    <div class="event-block flip reveal">
+      <div>
+        <h2>Cultural heritage and native title in focus at AMEC</h2>
+        <div class="factline">
+          <span class="chip filled">Sponsor</span>
+          <span class="chip">Perth, WA</span>
+        </div>
+        <p>Hetherington was proud to sponsor AMEC's Cultural Heritage to Native Title Forum in Perth, where David Salim was honoured to give the opening address alongside government, industry and legal leaders, exploring where Cultural Heritage and Native Title are heading in WA post the Kelly Review. Our own Madelaine Cannell-Lunn also contributed to the conversation.</p>
+        <p>We were also pleased to host an AMEC Boardroom Lunch at the Melbourne Hotel in Perth, joined by Hon Matthew Swinbourn MLC and fellow AMEC members.</p>
+        <p>These forums matter more than most people realise. Cultural heritage and native title sit at the centre of nearly every project decision in this industry, and the landscape continues to shift. Thank you to AMEC, the speakers, the panellists and everyone who came along.</p>
+      </div>
+      <div class="media">
+        <img src="assets/amec-lunch.jpg" alt="Guests seated at the AMEC Boardroom Lunch at the Melbourne Hotel, Perth">
+        <figcaption>The AMEC Boardroom Lunch, Melbourne Hotel, Perth.</figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PEOPLE ══════════════ -->
+<section class="people" id="people">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-light">Our people</span>
+      <span class="rule"></span>
+    </div>
+    <div class="people-grid">
+      <div class="reveal">
+        <figure>
+          <img src="assets/wimnet.jpg" alt="Karinne Moss and Emily-Rose Clemence at the 2026 NSW Women in Mining Network launch">
+          <figcaption>Karinne Moss and Emily-Rose Clemence at the 2026 WIMNET launch.</figcaption>
+        </figure>
+      </div>
+      <div class="reveal">
+        <h2>Investing in the next generation of leaders</h2>
+        <p style="margin-top:18px">Karinne Moss and Emily-Rose Clemence attended the launch of the 2026 NSW Women in Mining Network (WIMNET), where Hetherington is proud to be sponsoring both Karinne and Emily to take part in this year's Women in Mining mentoring program.</p>
+        <p>Supporting the pathways of emerging leaders in our sector remains a priority for us, and we look forward to seeing what the year ahead holds for them both.</p>
+        <div class="promo-card">
+          <span class="eyebrow on-light">Team news</span>
+          <div class="promo-names">Congratulations to <strong>Karinne Moss</strong> and <strong>Emily-Rose Clemence</strong>, <span>both recently promoted to Senior Consultants in our Sydney office</span> — well-deserved recognition for their ongoing contributions to the team.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REGULATORY ══════════════ -->
+<section class="reg" id="regulatory">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-light">Recent regulatory updates</span>
+      <span class="rule"></span>
+    </div>
+    <p class="reg-intro lede reveal">The rules are moving in four jurisdictions this quarter. Here's what our consultants are tracking — and what it means for your tenements, timelines and compliance obligations.</p>
+
+    <div class="reg-list">
+
+      <article class="reg-card reveal">
+        <div class="juris">NSW<small>New South Wales</small></div>
+        <div>
+          <h3>Streamlining native title assessment: the Infrastructure Facility Process</h3>
+          <p>A High Court ruling has prompted NSW Resources to overhaul how native title is assessed for certain mining lease applications. Consultant Holly Hannon outlines the new Infrastructure Facility Process — what triggered it, who it applies to, and what it means for project timelines.</p>
+          <a class="more" href="#">Read the full update →</a><!-- TODO: replace with published article URL -->
+        </div>
+      </article>
+
+      <article class="reg-card reveal">
+        <div class="juris">SA<small>South Australia</small></div>
+        <div>
+          <h3>Mining reforms propose to extend the life of exploration licences</h3>
+          <p>South Australia is moving to give exploration licence holders more flexibility, with proposed amendments under the Statutes Amendment (Mining and Energy Reforms) Bill that would allow licences to be extended beyond the current 18-year limit. We outline what the Bill proposes, the circumstances under which an extension may be granted, and the current state of the reforms.</p>
+          <a class="more" href="#">Read the full update →</a><!-- TODO: replace with published article URL -->
+        </div>
+      </article>
+
+      <article class="reg-card reveal">
+        <div class="juris">NT<small>Northern Territory</small></div>
+        <div>
+          <h3>Mineral titles framework modernised: the Amendment Act is now in force</h3>
+          <p>The Northern Territory has modernised its mineral titles framework with the Mineral Titles Legislation Amendment Act 2026 (NT). Introduced in March 2026 and in force from 5 June, it brings changes to exploration licences, new title categories for small-scale and fossicking activities, and updates to preliminary exploration requirements.</p>
+          <details class="fulltext">
+            <summary>Read the full update</summary>
+            <div class="body">
+              <p>On 18 March 2026, the Northern Territory Minister for Mining and Energy, Hon Gerald Maley MLA, introduced the Mineral Titles Legislation Amendment Bill 2026 (NT). The bill was passed on 14 May 2026, assented to on 4 June 2026 and commenced on 5 June 2026, now being the Mineral Titles Legislation Amendment Act 2026 (NT) ("Amendment Act").</p>
+              <h4>Key takeaways</h4>
+              <p>The Amendment Act amends the Mineral Titles Act 2010 (NT), the Mineral Titles Regulations 2011 (NT), the Environment Protection Act 2019 (NT) and the Environment Protection Regulations 2020 (NT), addressing minor issues identified since the introduction of the Environmental (Mining) Licensing Scheme. It aims to improve the efficiency and transparency of exploration and mining processes by simplifying application pathways, modernising reporting requirements, and introducing more flexible, proportionate approaches to renewals, reductions and reporting.</p>
+              <h4>New title categories</h4>
+              <p>New mineral title categories are being introduced to better reflect the diversity of mining and fossicking activities: Mineral Leases for Small-Scale Mines, Tourist Fossicking and Fossicking — fit-for-purpose arrangements for activities not captured under the existing legislation, reducing administrative burden on small operators and fossicking businesses.</p>
+              <ul>
+                <li>The Mineral Lease for Small-Scale Mines supports operations such as alluvial gold mining, with reporting requirements reduced or simplified when activity and risk are low, and less stringent application requirements — excluding the requirement to provide evidence of an economic resource.</li>
+                <li>It also supports the transition of non-compliant existing interests, preserving the holder's rights (subject to compliance with title conditions such as annual rent, administration fees, an expiry date and a right of renewal) while aligning them with the contemporary legislative framework.</li>
+                <li>Tourist Fossicking and Fossicking titles support individuals and tourist operations over relatively small areas, allowing mechanical means to push back topsoil to a maximum depth of one metre. A fossicking permit will be available to individuals, family groups, clubs and commercial tour groups for a fee, with a reduced-fee NT resident permit.</li>
+              </ul>
+              <h4>Exploration licences</h4>
+              <ul>
+                <li>Renewal period extended from two to six years.</li>
+                <li>Biennial title reduction requirements removed — reduction now required at first renewal.</li>
+                <li>A summary of the proposed technical work program for the following four years will be required.</li>
+                <li>Minimum size of an exploration licence reduced from four blocks to one.</li>
+                <li>Renewals must be received one month prior to the title's expiry date, be accompanied by the rent for the operational year, and reduce the title area by 50%.</li>
+              </ul>
+              <h4>Extractive mineral exploration licences</h4>
+              <p>Improvements for extractive minerals operators include longer grant periods, a 30-day moratorium over land previously subject to a ceased extractive mineral exploration licence (allowing for more competitive applications), and the ability to move extractive materials from one extractive mineral permit to another for processing, storage and removal.</p>
+              <h4>Preliminary exploration</h4>
+              <p>The Amendment Act clarifies preliminary exploration requirements, particularly on Aboriginal land, ensuring consent processes align with the Aboriginal Land Act 1978 (NT) rather than the more onerous section 41 processes under the Aboriginal Land Rights (Northern Territory) Act 1976 (Cth). Airborne geoscientific surveys no longer require the Minister's approval; instead, proponents must give the Minister at least 30 days' notice, and the Minister may impose conditions, including written notification to affected stakeholders.</p>
+              <h4>Key impacts</h4>
+              <p>The Amendment Act represents a significant modernisation of the Northern Territory's mineral titles system — strengthening environmental safeguards, clarifying land access and consent processes, and delivering a more accessible and efficient legislative framework.</p>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="reg-card reveal">
+        <div class="juris">WA<small>Western Australia</small></div>
+        <div>
+          <h3>Review of the State Petroleum Legislative Framework</h3>
+          <p>Western Australia is reviewing its petroleum legislative framework, with five reform proposals aimed at ensuring exploration and retention activities progress to production in a timely manner. We outline the key proposals — from stricter limits on exploration permit extensions to stronger powers to terminate inactive production licences — and where the process currently stands.</p>
+          <a class="more" href="#">Read the full update →</a><!-- TODO: replace with published article URL -->
+        </div>
+      </article>
+
+      <article class="reg-card reveal">
+        <div class="juris">NSW<small>New South Wales</small></div>
+        <div>
+          <h3>A new standard for engagement: the community consultation code is now in force</h3>
+          <p>NSW's revised Exploration Code of Practice for community consultation is now fully enforceable, following the completion of its transition period on 31 March 2026. We outline the key changes — including new planning, reporting and engagement contact obligations — and what titleholders need to do to ensure compliance.</p>
+          <a class="more" href="#">Read the full update →</a><!-- TODO: replace with published article URL -->
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA / CONTACT ══════════════ -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--celadon)">Talk to Hetherington</span>
+      <h2 style="margin-top:16px">Questions about what these changes mean <em>for your project?</em></h2>
+      <p>Our consultants track every shift in tenure, land access and compliance across Australia — so you don't have to. Get in touch to understand what the latest updates mean for your approvals, obligations and timelines.</p>
+      <p style="margin-top:26px"><a class="btn" href="mailto:info@hemts.com.au">Email info@hemts.com.au</a></p>
+    </div>
+    <div class="offices reveal">
+      <div class="office">
+        <div class="city">Sydney</div>
+        <p>Level 9, Suite 901, 15 Castlereagh Street<br>Sydney NSW 2000<br><a href="tel:0299674844">02 9967 4844</a></p>
+      </div>
+      <div class="office">
+        <div class="city">Perth</div>
+        <p>Allendale Square, Level 20, Suite 2<br>77 St Georges Terrace, Perth WA 6000<br><a href="tel:0892289977">08 9228 9977</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Hetherington · The Hetherington Post — July 2026 edition</span>
+    <span><a href="https://hetherington.net.au/hetherington-post/">Past editions</a> · <a href="https://hetherington.net.au">hetherington.net.au</a></span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
