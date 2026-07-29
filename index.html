@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#152E38;          /* deep slate navy — brand backdrop */
+  --ink:#152E38;
   --slate:#2E4E5C;
   --slate-soft:#3E6373;
-  --celadon:#D9E0C2;      /* pale sage — logo mark */
+  --celadon:#D9E0C2;
   --celadon-deep:#B9C69B;
   --paper:#F7F6F1;
   --white:#FFFFFF;
-  --mist:#A7BFC7;         /* muted blue-grey on dark */
+  --mist:#A7BFC7;
   --line:rgba(21,46,56,.14);
   --line-dark:rgba(255,255,255,.16);
   --max:1180px;
@@ -26,152 +26,180 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{display:block;max-width:100%}
 a{color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(18px,4vw,48px)}
 
-/* ---------- eyebrow / labels ---------- */
-.eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
 .eyebrow.on-dark{color:var(--celadon)}
 .eyebrow.on-light{color:var(--slate-soft)}
 
-/* ---------- top bar ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(21,46,56,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
-.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff}
-.brand img{height:26px;width:auto}
-.brand .fallback{font-family:var(--serif);font-size:21px;letter-spacing:.02em;font-weight:500}
-.brand .edition{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);border-left:1px solid var(--line-dark);padding-left:14px}
-.topnav{display:flex;gap:26px}
-.topnav a{color:var(--mist);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em;transition:color .2s}
-.topnav a:hover,.topnav a:focus-visible{color:var(--celadon)}
-@media(max-width:860px){.topnav{display:none}.brand .edition{display:none}}
+/* ══ top bar + reading progress ══ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(21,46,56,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:#fff;min-width:0}
+.brand img{height:24px;width:auto}
+.brand .fallback{font-family:var(--serif);font-size:20px;font-weight:500}
+.brand .edition{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);border-left:1px solid var(--line-dark);padding-left:12px;white-space:nowrap}
+.now-reading{display:flex;align-items:center;gap:10px;min-width:0;color:var(--mist);font-size:12px;letter-spacing:.06em}
+.now-reading .dot{width:6px;height:6px;border-radius:50%;background:var(--celadon);flex:none;animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.now-reading b{color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.now-reading .pct{color:var(--celadon);font-weight:600;flex:none}
+.progress-track{position:fixed;top:60px;left:0;right:0;height:3px;background:rgba(255,255,255,.08);z-index:60}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--celadon-deep),var(--celadon));transition:width .08s linear}
+@media(max-width:700px){.brand .edition{display:none}.now-reading{font-size:11px}.now-reading b{max-width:44vw}}
 
-/* ---------- hero ---------- */
-.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:var(--ink);color:#fff;overflow:hidden}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,46,56,.35) 0%,rgba(21,46,56,.15) 40%,rgba(21,46,56,.92) 100%)}
-.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(48px,8vh,96px);width:100%}
-.hero .kicker{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero .kicker .rule{height:1px;width:56px;background:var(--celadon)}
-.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,8.5vw,110px);line-height:1.02;letter-spacing:-.01em;max-width:12ch}
-.hero h1 em{font-style:italic;font-weight:300;color:var(--celadon)}
-.hero .stand{margin-top:26px;max-width:58ch;font-size:clamp(16px,1.6vw,19px);color:#E6EDEF;font-weight:400}
-.hero .meta-row{display:flex;flex-wrap:wrap;gap:28px;margin-top:38px;padding-top:22px;border-top:1px solid var(--line-dark);font-size:13px;color:var(--mist);letter-spacing:.06em}
-.hero .meta-row strong{color:#fff;font-weight:600}
-.scrollcue{position:absolute;right:clamp(20px,4vw,48px);bottom:32px;z-index:3;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist);display:flex;align-items:center;gap:12px}
-.scrollcue::after{content:"";width:1px;height:44px;background:var(--celadon);animation:drip 2.4s ease-in-out infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@media(max-width:640px){.scrollcue{display:none}}
+/* ══ side index rail ══ */
+.rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;gap:6px}
+.rail a{display:flex;align-items:center;gap:10px;justify-content:flex-end;text-decoration:none;padding:5px 0;color:var(--slate-soft)}
+.rail .label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s;background:var(--ink);color:var(--celadon);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.rail .tick{width:18px;height:2px;background:currentColor;opacity:.35;transition:width .25s,opacity .25s,background .25s;flex:none}
+.rail a:hover .label,.rail a:focus-visible .label,.rail a.active .label{opacity:1;transform:none}
+.rail a.active .tick{width:30px;opacity:1;background:var(--celadon-deep)}
+.rail.on-dark a{color:var(--mist)}
+@media(max-width:1240px){.rail{display:none}}
 
-/* ---------- section scaffolding ---------- */
-section{padding:clamp(64px,9vw,120px) 0}
-.sec-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;margin-bottom:clamp(32px,5vw,56px)}
-.sec-head .rule{height:1px;background:var(--line);align-self:center}
-h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.01em}
-h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.4vw,27px);line-height:1.25}
+/* ══ section scaffolding + transitions ══ */
+main{padding-top:63px}
+section{padding:clamp(60px,9vw,120px) 0;position:relative}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:clamp(30px,5vw,56px)}
+.sec-head .rule{height:1px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.7,.2,1) .15s}
+.sec-head.in .rule{transform:scaleX(1)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(29px,4vw,46px);line-height:1.12;letter-spacing:-.01em}
+h3{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2.4vw,26px);line-height:1.25}
 p+p{margin-top:1em}
-.lede{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.5;font-weight:400}
+.lede{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.5}
 
-/* ---------- editor ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.12s}
+.reveal[data-d="2"]{transition-delay:.24s}
+.reveal[data-d="3"]{transition-delay:.36s}
+.reveal-img{overflow:hidden}
+.reveal-img img,.reveal-img video{transform:scale(1.06);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.reveal-img.in img,.reveal-img.in video{transform:scale(1)}
+
+/* ══ hero ══ */
+.hero{position:relative;min-height:min(92vh,880px);display:flex;align-items:flex-end;background:var(--ink);color:#fff;overflow:hidden}
+.hero .bg{position:absolute;inset:-4%;background:url("assets/DSC07429.jpg") center 32%/cover no-repeat;animation:kenburns 22s ease-in-out infinite alternate;filter:saturate(.92)}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,46,56,.55) 0%,rgba(21,46,56,.25) 42%,rgba(21,46,56,.94) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(40px,7vh,88px);width:100%}
+.hero .kicker{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.hero .kicker .rule{height:1px;width:56px;background:var(--celadon)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8.5vw,106px);line-height:1.02;letter-spacing:-.01em;max-width:12ch}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--celadon)}
+.hero .stand{margin-top:24px;max-width:58ch;font-size:clamp(15.5px,1.6vw,19px);color:#E6EDEF}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line-dark);font-size:12.5px;color:var(--mist);letter-spacing:.06em}
+.hero .meta-row strong{color:#fff;font-weight:600}
+.hero-fx{opacity:0;transform:translateY(30px);animation:heroin 1s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-fx.f2{animation-delay:.15s}.hero-fx.f3{animation-delay:.3s}.hero-fx.f4{animation-delay:.45s}
+@keyframes heroin{to{opacity:1;transform:none}}
+@media(max-width:640px){.hero{min-height:78vh}.hero .meta-row{gap:8px 18px;font-size:11.5px}}
+
+/* ══ editor ══ */
 .editor{background:var(--white);border-top:1px solid var(--line)}
-.editor-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:start}
+.editor-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(30px,5vw,72px);align-items:start}
 .editor-note p{max-width:62ch}
-.sig{margin-top:34px;display:flex;align-items:center;gap:18px}
+.sig{margin-top:32px}
 .sig .name{font-family:var(--serif);font-size:22px;font-style:italic}
 .sig .role{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-soft);margin-top:2px}
-.editor-photo figure{position:relative}
-.editor-photo img{border-radius:2px}
+.editor-photo{position:sticky;top:96px}
+.editor-photo img{width:100%;max-width:420px;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:2px}
 figcaption{font-size:12.5px;color:var(--slate-soft);margin-top:10px;letter-spacing:.03em}
-@media(max-width:860px){.editor-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.editor-grid{grid-template-columns:1fr}.editor-photo{position:static;order:-1}.editor-photo img{max-width:340px}}
 
-/* ---------- feature: beneath the surface ---------- */
+/* ══ media sizing (portrait reels + photos) ══ */
+.reel{background:#0F232B;border-radius:4px;padding:clamp(14px,2vw,22px);display:flex;justify-content:center}
+.reel video{height:min(62vh,540px);width:auto;max-width:100%;border-radius:4px;object-fit:contain}
+.photo-frame img{width:100%;max-height:440px;object-fit:cover;border-radius:2px}
+@media(max-width:640px){.reel video{height:min(64vh,480px)}}
+
+/* ══ feature ══ */
 .feature{background:var(--ink);color:#fff}
-.feature .eyebrow{color:var(--celadon)}
 .feature p{color:#DCE6E9;max-width:64ch}
 .feature .lede{color:#fff}
-.feat-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
-.feat-media video{width:100%;border-radius:2px}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.gallery figure{margin:0}
-.gallery img{aspect-ratio:1/1;object-fit:cover;border-radius:2px;filter:saturate(.96)}
-.gallery figcaption{color:var(--mist)}
-.pull{border-left:2px solid var(--celadon);padding-left:22px;margin:30px 0;font-family:var(--serif);font-size:clamp(19px,2vw,22px);font-style:italic;color:var(--celadon);line-height:1.45}
+.feat-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,72px);align-items:start}
+.pull{border-left:2px solid var(--celadon);padding-left:22px;margin:28px 0;font-family:var(--serif);font-size:clamp(18px,2vw,22px);font-style:italic;color:var(--celadon);line-height:1.45}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gallery a{display:block;overflow:hidden;border-radius:2px}
+.gallery a:hover img{transform:scale(1.05)}
+.gallery-cap{color:var(--mist);font-size:12.5px;margin-top:10px}
 @media(max-width:860px){.feat-grid{grid-template-columns:1fr}}
 
-/* ---------- events ---------- */
-.event-block{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,72px);align-items:start}
-.event-block+.event-block{margin-top:clamp(56px,8vw,96px);padding-top:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
+/* ══ events ══ */
+.event-block{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,72px);align-items:start}
+.event-block+.event-block{margin-top:clamp(52px,8vw,96px);padding-top:clamp(52px,8vw,96px);border-top:1px solid var(--line)}
 .event-block.flip .media{order:-1}
 .event-block p{max-width:62ch}
-.media video,.media img{width:100%;border-radius:2px}
-.factline{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px}
-.chip{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);border-radius:999px;color:var(--slate)}
+.factline{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 4px}
+.chip{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);border-radius:999px;color:var(--slate)}
 .chip.filled{background:var(--celadon);border-color:var(--celadon);color:var(--ink)}
 @media(max-width:860px){.event-block{grid-template-columns:1fr}.event-block.flip .media{order:0}}
 
-/* ---------- people ---------- */
+/* ══ people ══ */
 .people{background:var(--white);border-top:1px solid var(--line)}
-.people-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
-.promo-card{margin-top:34px;background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:28px 30px}
+.people-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,72px);align-items:start}
+.people-grid .photo-frame img{max-height:520px;object-position:top}
+.promo-card{margin-top:30px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--celadon-deep);border-radius:2px;padding:26px 28px}
 .promo-card .eyebrow{display:block;margin-bottom:10px}
-.promo-names{font-family:var(--serif);font-size:clamp(20px,2.2vw,25px);line-height:1.35}
+.promo-names{font-family:var(--serif);font-size:clamp(19px,2.2vw,24px);line-height:1.35}
 .promo-names span{font-style:italic;color:var(--slate-soft)}
 @media(max-width:860px){.people-grid{grid-template-columns:1fr}}
 
-/* ---------- regulatory ---------- */
-.reg{background:var(--paper)}
-.reg-intro{max-width:66ch;margin-bottom:clamp(32px,4vw,48px)}
-.reg-list{display:grid;gap:18px}
-.reg-card{background:var(--white);border:1px solid var(--line);border-radius:2px;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:110px minmax(0,1fr);gap:clamp(18px,3vw,36px)}
-.juris{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--slate);line-height:1}
-.juris small{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-soft);margin-top:8px}
+/* ══ regulatory ══ */
+.reg-intro{max-width:66ch;margin-bottom:clamp(30px,4vw,48px)}
+.reg-list{display:grid;gap:16px}
+.reg-card{background:var(--white);border:1px solid var(--line);border-radius:2px;padding:clamp(22px,3vw,34px);display:grid;grid-template-columns:104px minmax(0,1fr);gap:clamp(16px,3vw,36px);transition:box-shadow .3s,transform .3s}
+.reg-card:hover{box-shadow:0 12px 34px -18px rgba(21,46,56,.35);transform:translateY(-2px)}
+.juris{font-family:var(--serif);font-size:32px;font-weight:500;color:var(--slate);line-height:1}
+.juris small{display:block;font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate-soft);margin-top:8px}
 .reg-card h3{margin-bottom:10px}
 .reg-card p{max-width:70ch;font-size:16px}
-.reg-card .more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--slate);border-bottom:1px solid var(--celadon-deep);padding-bottom:3px;transition:color .2s,border-color .2s}
+.reg-card .more{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--slate);border-bottom:1px solid var(--celadon-deep);padding-bottom:3px;transition:color .2s,border-color .2s}
 .reg-card .more:hover{color:var(--ink);border-color:var(--ink)}
-details.fulltext{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+details.fulltext{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
 details.fulltext summary{cursor:pointer;font-size:13.5px;font-weight:600;letter-spacing:.05em;color:var(--slate);list-style:none;display:inline-flex;align-items:center;gap:8px}
+details.fulltext summary::-webkit-details-marker{display:none}
 details.fulltext summary::before{content:"+";font-family:var(--serif);font-size:19px;line-height:1;color:var(--celadon-deep)}
 details.fulltext[open] summary::before{content:"–"}
 details.fulltext .body{margin-top:16px;font-size:16px;max-width:70ch}
 details.fulltext h4{font-family:var(--serif);font-size:19px;font-weight:600;margin:22px 0 8px}
 details.fulltext ul{margin:10px 0 10px 20px}
 details.fulltext li{margin-bottom:6px}
-@media(max-width:640px){.reg-card{grid-template-columns:1fr}.juris{font-size:28px}.juris small{display:inline;margin-left:8px}}
+@media(max-width:640px){.reg-card{grid-template-columns:1fr;gap:10px}.juris{font-size:24px;display:flex;align-items:baseline;gap:10px}.juris small{margin-top:0}}
 
-/* ---------- CTA + footer ---------- */
-.cta{background:var(--ink);color:#fff;text-align:left}
-.cta .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(32px,5vw,72px);align-items:center}
+/* ══ CTA / footer ══ */
+.cta{background:var(--ink);color:#fff}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(30px,5vw,72px);align-items:center}
 .cta h2 em{font-style:italic;color:var(--celadon);font-weight:300}
 .cta p{color:var(--mist);max-width:52ch;margin-top:16px}
-.btn{display:inline-block;margin-top:8px;background:var(--celadon);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;padding:16px 30px;border-radius:2px;transition:background .2s}
-.btn:hover{background:#E6ECD2}
-.offices{display:grid;gap:26px}
+.btn{display:inline-block;margin-top:8px;background:var(--celadon);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;padding:15px 28px;border-radius:2px;transition:background .2s,transform .2s}
+.btn:hover{background:#E6ECD2;transform:translateY(-1px)}
+.offices{display:grid;gap:24px}
 .office .city{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--celadon);margin-bottom:8px}
 .office p{color:#DCE6E9;font-size:15px;margin:0}
 .office a{color:#fff;text-decoration:none;border-bottom:1px solid var(--line-dark)}
 @media(max-width:860px){.cta .wrap{grid-template-columns:1fr}}
-footer{background:var(--ink);border-top:1px solid var(--line-dark);color:var(--mist)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:26px;padding-bottom:26px;font-size:13px}
+footer{background:#0F232B;color:var(--mist)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding-top:24px;padding-bottom:24px;font-size:13px}
 footer a{color:var(--celadon);text-decoration:none}
 
-/* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none;transition:none}
-  .scrollcue::after{animation:none}
-  .hero video{display:none}
+  .reveal,.hero-fx,.reveal-img img,.reveal-img video,.sec-head .rule{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+  .hero .bg{animation:none}
+  .now-reading .dot{animation:none}
 }
 :focus-visible{outline:2px solid var(--celadon-deep);outline-offset:3px}
 </style>
 </head>
 <body>
 
-<!-- ══════════════ TOP BAR ══════════════ -->
+<!-- ══ TOP BAR + PROGRESS ══ -->
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="https://hetherington.net.au">
@@ -179,166 +207,187 @@ footer a{color:var(--celadon);text-decoration:none}
       <span class="fallback" id="wm" style="display:none">Hetherington</span>
       <span class="edition">The Post · July 2026</span>
     </a>
-    <nav class="topnav" aria-label="Edition sections">
-      <a href="#editor">Editor's note</a>
-      <a href="#beneath">Beneath the Surface</a>
-      <a href="#events">Events</a>
-      <a href="#people">Our people</a>
-      <a href="#regulatory">Regulatory updates</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="now-reading" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <b id="nowSection">The Hetherington Post</b>
+      <span class="pct" id="nowPct">0%</span>
+    </div>
   </div>
 </header>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="pbar"></div></div>
 
-<!-- ══════════════ HERO ══════════════ -->
-<div class="hero">
-  <video autoplay muted loop playsinline poster="assets/bts-poster.jpg" aria-hidden="true">
-    <source src="assets/beneath-the-surface.mp4" type="video/mp4">
-  </video>
+<!-- ══ SIDE INDEX RAIL ══ -->
+<nav class="rail" id="rail" aria-label="Edition index">
+  <a href="#top" data-sec="top"><span class="label">Cover</span><span class="tick"></span></a>
+  <a href="#editor" data-sec="editor"><span class="label">Editor's note</span><span class="tick"></span></a>
+  <a href="#beneath" data-sec="beneath"><span class="label">Beneath the Surface</span><span class="tick"></span></a>
+  <a href="#events" data-sec="events"><span class="label">Events</span><span class="tick"></span></a>
+  <a href="#people" data-sec="people"><span class="label">Our people</span><span class="tick"></span></a>
+  <a href="#regulatory" data-sec="regulatory"><span class="label">Regulatory updates</span><span class="tick"></span></a>
+  <a href="#contact" data-sec="contact"><span class="label">Contact</span><span class="tick"></span></a>
+</nav>
+
+<main>
+<!-- ══ HERO ══ -->
+<div class="hero" id="top" data-title="Cover">
+  <div class="bg" role="img" aria-label="The fireside conversation with Billy Dib at Beneath the Surface"></div>
   <div class="wrap">
-    <div class="kicker">
+    <div class="kicker hero-fx">
       <span class="rule"></span>
       <span class="eyebrow on-dark">The Hetherington Post · July 2026</span>
     </div>
-    <h1>Beneath <em>the</em> Surface</h1>
-    <p class="stand">Our first-ever client appreciation evening opened NSW Minerals Week in style — a night at the Teahouse, Crown Sydney, celebrating the relationships at the core of everything we do. Beyond the work, beyond the titles, and beneath the surface.</p>
-    <div class="meta-row">
+    <h1 class="hero-fx f2">Beneath <em>the</em> Surface</h1>
+    <p class="stand hero-fx f3">Our first-ever client appreciation evening opened NSW Minerals Week in style — a night at the Teahouse, Crown Sydney, celebrating the relationships at the core of everything we do. Beyond the work, beyond the titles, and beneath the surface.</p>
+    <div class="meta-row hero-fx f4">
       <span><strong>In this edition</strong></span>
       <span>Beneath the Surface</span>
       <span>Exploration &amp; Tenures Forum</span>
       <span>AMEC in Perth</span>
       <span>WIMNET 2026</span>
-      <span>Regulatory updates — NT · SA · WA · NSW</span>
+      <span>Regulatory — NT · SA · WA · NSW</span>
     </div>
   </div>
-  <span class="scrollcue">Beneath the surface</span>
 </div>
 
-<!-- ══════════════ EDITOR ══════════════ -->
-<section class="editor" id="editor">
+<!-- ══ EDITOR ══ -->
+<section class="editor" id="editor" data-title="Editor's note">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow on-light">Note from the editor</span>
       <span class="rule"></span>
     </div>
     <div class="editor-grid">
-      <div class="editor-note reveal">
-        <p class="lede">NSW Minerals Week began this year with Beneath the Surface, Hetherington's first-ever client appreciation event — and we couldn't be prouder of how it landed.</p>
-        <p>Held at the Teahouse, Crown Sydney, it was a chance to pause, connect, and celebrate the relationships that sit at the core of what we do at Hetherington. The night featured curated food and beverage experiences, followed by a fireside conversation with Australian professional boxer Billy Dib, who brought real perspective, honesty, and impact to the room. We couldn't have hoped for a better first outing, and the warmth in the room made it clear just how much these relationships mean to all of us.</p>
+      <div class="editor-note">
+        <p class="lede reveal">NSW Minerals Week began this year with Beneath the Surface, Hetherington's first-ever client appreciation event — and we couldn't be prouder of how it landed.</p>
+        <div class="reveal" data-d="1">
+        <p style="margin-top:1em">Held at the Teahouse, Crown Sydney, it was a chance to pause, connect, and celebrate the relationships that sit at the core of what we do at Hetherington. The night featured curated food and beverage experiences, followed by a fireside conversation with Australian professional boxer Billy Dib, who brought real perspective, honesty, and impact to the room. We couldn't have hoped for a better first outing, and the warmth in the room made it clear just how much these relationships mean to all of us.</p>
         <p>It was a strong start to a busy season for the firm — from our tenth consecutive year as main sponsor of the NSW Minerals Council's Exploration &amp; Tenures Forum, to AMEC's Cultural Heritage to Native Title Forum in Perth, and the launch of the 2026 NSW Women in Mining Network. You'll find it all in the pages that follow, alongside the regulatory shifts our team is tracking for clients across the country.</p>
         <p>Thank you to our valued clients, supporters, and industry peers who continue to make this work what it is.</p>
         <div class="sig">
-          <div>
-            <div class="name">David Salim</div>
-            <div class="role">CEO &amp; Principal Solicitor, Hetherington</div>
-          </div>
+          <div class="name">David Salim</div>
+          <div class="role">CEO &amp; Principal Solicitor, Hetherington</div>
+        </div>
         </div>
       </div>
-      <div class="editor-photo reveal">
+      <div class="editor-photo reveal reveal-img" data-d="1">
         <figure>
-          <img src="assets/DSC07054.jpg" alt="David Salim and Vivian Salim at the Beneath the Surface media wall">
-          <figcaption>David Salim and Non-Executive Director Vivian Salim at Beneath the Surface, Crown Sydney.</figcaption>
+          <img src="https://hetherington.net.au/wp-content/uploads/2024/10/Team-Board-David-Salim-new.jpg" alt="David Salim, CEO and Principal Solicitor, Hetherington">
+          <figcaption>David Salim · CEO &amp; Principal Solicitor</figcaption>
         </figure>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ FEATURE ══════════════ -->
-<section class="feature" id="beneath">
+<!-- ══ FEATURE ══ -->
+<section class="feature" id="beneath" data-title="Beneath the Surface">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Feature · NSW Minerals Week</span>
+      <span class="eyebrow on-dark">Feature · NSW Minerals Week</span>
       <span class="rule" style="background:var(--line-dark)"></span>
     </div>
     <div class="feat-grid">
-      <div class="reveal">
-        <h2>An evening of genuine hospitality</h2>
-        <p class="lede" style="margin-top:18px">Hetherington presents Beneath the Surface — our first client appreciation evening, and one we'll remember.</p>
+      <div>
+        <h2 class="reveal">An evening of genuine hospitality</h2>
+        <p class="lede reveal" data-d="1" style="margin-top:18px">Hetherington presents Beneath the Surface — our first client appreciation evening, and one we'll remember.</p>
+        <div class="reveal" data-d="2">
         <p style="margin-top:18px">Guests were welcomed to the Teahouse at Crown Sydney for curated food and beverage experiences, before settling in for a fireside discussion between David Salim and two-time world champion boxer Billy Dib — a conversation that brought real perspective, honesty and impact to the room.</p>
         <div class="pull">"A chance to pause, connect and celebrate the relationships that sit at the core of what we do — beyond the work, beyond the titles, and beneath the surface."</div>
         <p>Thank you to our valued clients, supporters and industry peers who joined us and made the evening what it was. Here's to many more.</p>
-      </div>
-      <div class="feat-media reveal">
-        <video controls preload="metadata" poster="assets/bts-poster.jpg">
-          <source src="assets/beneath-the-surface.mp4" type="video/mp4">
-        </video>
-        <div class="gallery">
-          <figure><img src="assets/DSC07254.jpg" alt="The Hetherington team at the Beneath the Surface media wall"></figure>
-          <figure><img src="assets/DSC07429.jpg" alt="Fireside conversation between Billy Dib and David Salim"></figure>
-          <figure><img src="assets/DSC07479.jpg" alt="Copies of Billy Dib's book A True Heart"></figure>
         </div>
-        <figcaption style="color:var(--mist);font-size:12.5px;margin-top:10px">The Hetherington team · the fireside conversation with Billy Dib · A True Heart, Billy's story in print.</figcaption>
+      </div>
+      <div>
+        <div class="reel reveal reveal-img" data-d="1">
+          <video controls preload="metadata" poster="assets/bts-poster.jpg">
+            <source src="assets/beneath-the-surface.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="gallery reveal" data-d="2">
+          <a href="assets/DSC07254.jpg" target="_blank" rel="noopener"><img src="assets/DSC07254.jpg" alt="The Hetherington team at the Beneath the Surface media wall"></a>
+          <a href="assets/DSC07429.jpg" target="_blank" rel="noopener"><img src="assets/DSC07429.jpg" alt="Fireside conversation between Billy Dib and David Salim"></a>
+          <a href="assets/DSC07479.jpg" target="_blank" rel="noopener"><img src="assets/DSC07479.jpg" alt="Copies of Billy Dib's book A True Heart"></a>
+        </div>
+        <p class="gallery-cap reveal" data-d="3">The Hetherington team · the fireside conversation with Billy Dib · A True Heart, Billy's story in print.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ EVENTS ══════════════ -->
-<section id="events">
+<!-- ══ EVENTS ══ -->
+<section id="events" data-title="Events">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow on-light">What's happening at Hetherington</span>
       <span class="rule"></span>
     </div>
 
-    <div class="event-block reveal">
+    <div class="event-block">
       <div>
-        <h2>NSW Minerals Council's Exploration &amp; Tenures Forum</h2>
-        <div class="factline">
+        <h2 class="reveal">NSW Minerals Council's Exploration &amp; Tenures Forum</h2>
+        <div class="factline reveal" data-d="1">
           <span class="chip filled">Main sponsor — 10th consecutive year</span>
           <span class="chip">4 May · InterContinental Sydney</span>
         </div>
+        <div class="reveal" data-d="2">
         <p>Hetherington was proud to return as the main sponsor of the NSW Minerals Council's Exploration &amp; Tenures Forum 2026 for the tenth consecutive year. David Salim had the privilege of opening the day with the welcome address before a packed program of case studies and expert insights got underway.</p>
         <p>Assistant Manager Jemima Moffat took to the stage in the first session to share her insights on land access case studies and tips for success, and David was joined by Karinne, Emily, Olivia, Yung and Vivian for the day, which also covered carbon farming, exploration and mine approvals, and closed with government updates from NSW Resources and the NSW Resources Regulator.</p>
         <p>The forum concluded with a guest address by the Hon Courtney Houssos MLC — a fitting close to a day that brought together chief executives, exploration managers, titles managers and consultants from across the sector. It was a strong way to start the week, surrounded by so many of the conversations that matter most to our industry.</p>
+        </div>
       </div>
       <div class="media">
-        <video controls preload="metadata" poster="assets/forum-poster.jpg">
-          <source src="assets/tenures-forum.mp4" type="video/mp4">
-        </video>
-        <figcaption>Highlights from the Exploration &amp; Tenures Forum 2026.</figcaption>
+        <div class="reel reveal reveal-img" data-d="1">
+          <video controls preload="metadata" poster="assets/forum-poster.jpg">
+            <source src="assets/tenures-forum.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="reveal" data-d="2">Highlights from the Exploration &amp; Tenures Forum 2026.</figcaption>
       </div>
     </div>
 
-    <div class="event-block flip reveal">
+    <div class="event-block flip">
       <div>
-        <h2>Cultural heritage and native title in focus at AMEC</h2>
-        <div class="factline">
+        <h2 class="reveal">Cultural heritage and native title in focus at AMEC</h2>
+        <div class="factline reveal" data-d="1">
           <span class="chip filled">Sponsor</span>
           <span class="chip">Perth, WA</span>
         </div>
+        <div class="reveal" data-d="2">
         <p>Hetherington was proud to sponsor AMEC's Cultural Heritage to Native Title Forum in Perth, where David Salim was honoured to give the opening address alongside government, industry and legal leaders, exploring where Cultural Heritage and Native Title are heading in WA post the Kelly Review. Our own Madelaine Cannell-Lunn also contributed to the conversation.</p>
         <p>We were also pleased to host an AMEC Boardroom Lunch at the Melbourne Hotel in Perth, joined by Hon Matthew Swinbourn MLC and fellow AMEC members.</p>
         <p>These forums matter more than most people realise. Cultural heritage and native title sit at the centre of nearly every project decision in this industry, and the landscape continues to shift. Thank you to AMEC, the speakers, the panellists and everyone who came along.</p>
+        </div>
       </div>
       <div class="media">
-        <img src="assets/amec-lunch.jpg" alt="Guests seated at the AMEC Boardroom Lunch at the Melbourne Hotel, Perth">
-        <figcaption>The AMEC Boardroom Lunch, Melbourne Hotel, Perth.</figcaption>
+        <div class="photo-frame reveal reveal-img" data-d="1">
+          <img src="assets/amec-lunch.jpg" alt="Guests seated at the AMEC Boardroom Lunch at the Melbourne Hotel, Perth">
+        </div>
+        <figcaption class="reveal" data-d="2">The AMEC Boardroom Lunch, Melbourne Hotel, Perth.</figcaption>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ PEOPLE ══════════════ -->
-<section class="people" id="people">
+<!-- ══ PEOPLE ══ -->
+<section class="people" id="people" data-title="Our people">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow on-light">Our people</span>
       <span class="rule"></span>
     </div>
     <div class="people-grid">
-      <div class="reveal">
+      <div class="photo-frame reveal reveal-img">
         <figure>
           <img src="assets/wimnet.jpg" alt="Karinne Moss and Emily-Rose Clemence at the 2026 NSW Women in Mining Network launch">
           <figcaption>Karinne Moss and Emily-Rose Clemence at the 2026 WIMNET launch.</figcaption>
         </figure>
       </div>
-      <div class="reveal">
-        <h2>Investing in the next generation of leaders</h2>
+      <div>
+        <h2 class="reveal">Investing in the next generation of leaders</h2>
+        <div class="reveal" data-d="1">
         <p style="margin-top:18px">Karinne Moss and Emily-Rose Clemence attended the launch of the 2026 NSW Women in Mining Network (WIMNET), where Hetherington is proud to be sponsoring both Karinne and Emily to take part in this year's Women in Mining mentoring program.</p>
         <p>Supporting the pathways of emerging leaders in our sector remains a priority for us, and we look forward to seeing what the year ahead holds for them both.</p>
-        <div class="promo-card">
+        </div>
+        <div class="promo-card reveal" data-d="2">
           <span class="eyebrow on-light">Team news</span>
           <div class="promo-names">Congratulations to <strong>Karinne Moss</strong> and <strong>Emily-Rose Clemence</strong>, <span>both recently promoted to Senior Consultants in our Sydney office</span> — well-deserved recognition for their ongoing contributions to the team.</div>
         </div>
@@ -347,8 +396,8 @@ footer a{color:var(--celadon);text-decoration:none}
   </div>
 </section>
 
-<!-- ══════════════ REGULATORY ══════════════ -->
-<section class="reg" id="regulatory">
+<!-- ══ REGULATORY ══ -->
+<section id="regulatory" data-title="Regulatory updates">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow on-light">Recent regulatory updates</span>
@@ -435,16 +484,16 @@ footer a{color:var(--celadon);text-decoration:none}
   </div>
 </section>
 
-<!-- ══════════════ CTA / CONTACT ══════════════ -->
-<section class="cta" id="contact">
+<!-- ══ CTA / CONTACT ══ -->
+<section class="cta" id="contact" data-title="Contact">
   <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow" style="color:var(--celadon)">Talk to Hetherington</span>
-      <h2 style="margin-top:16px">Questions about what these changes mean <em>for your project?</em></h2>
-      <p>Our consultants track every shift in tenure, land access and compliance across Australia — so you don't have to. Get in touch to understand what the latest updates mean for your approvals, obligations and timelines.</p>
-      <p style="margin-top:26px"><a class="btn" href="mailto:info@hemts.com.au">Email info@hemts.com.au</a></p>
+    <div>
+      <span class="eyebrow reveal" style="color:var(--celadon)">Talk to Hetherington</span>
+      <h2 class="reveal" data-d="1" style="margin-top:16px">Questions about what these changes mean <em>for your project?</em></h2>
+      <p class="reveal" data-d="2">Our consultants track every shift in tenure, land access and compliance across Australia — so you don't have to. Get in touch to understand what the latest updates mean for your approvals, obligations and timelines.</p>
+      <p class="reveal" data-d="3" style="margin-top:26px"><a class="btn" href="mailto:info@hemts.com.au">Email info@hemts.com.au</a></p>
     </div>
-    <div class="offices reveal">
+    <div class="offices reveal" data-d="2">
       <div class="office">
         <div class="city">Sydney</div>
         <p>Level 9, Suite 901, 15 Castlereagh Street<br>Sydney NSW 2000<br><a href="tel:0299674844">02 9967 4844</a></p>
@@ -456,6 +505,7 @@ footer a{color:var(--celadon);text-decoration:none}
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -465,8 +515,30 @@ footer a{color:var(--celadon);text-decoration:none}
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// section + element reveals
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+document.querySelectorAll('.reveal,.sec-head').forEach(el=>io.observe(el));
+
+// reading progress + "now reading"
+const bar=document.getElementById('pbar'),now=document.getElementById('nowSection'),pct=document.getElementById('nowPct');
+const secs=[...document.querySelectorAll('[data-title]')];
+const railLinks=[...document.querySelectorAll('.rail a')];
+const secMap={top:'top',editor:'editor',beneath:'beneath',events:'events',people:'people',regulatory:'regulatory',contact:'contact'};
+function onScroll(){
+  const h=document.documentElement;
+  const p=Math.min(1,Math.max(0,h.scrollTop/(h.scrollHeight-h.clientHeight)));
+  bar.style.width=(p*100)+'%';
+  pct.textContent=Math.round(p*100)+'%';
+  // active section = last one whose top passed 40% of viewport
+  let active=secs[0];
+  for(const s of secs){ if(s.getBoundingClientRect().top < window.innerHeight*.4) active=s; }
+  now.textContent=active.dataset.title;
+  const id=active.id;
+  railLinks.forEach(a=>a.classList.toggle('active',a.dataset.sec===id));
+}
+document.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll);
+onScroll();
 </script>
 </body>
 </html>
